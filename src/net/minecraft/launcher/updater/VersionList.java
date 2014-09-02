@@ -185,7 +185,7 @@ public abstract class VersionList {
     }
 
     public String serializeVersionList() {
-        VersionList.RawVersionList list = new VersionList.RawVersionList((VersionList.NamelessClass415696397) null);
+        VersionList.RawVersionList list = new VersionList.RawVersionList((VersionList.NamelessClass425749475) null);
         MinecraftReleaseType[] i$ = MinecraftReleaseType.values();
         int version = i$.length;
 
@@ -229,8 +229,8 @@ public abstract class VersionList {
         this.removeVersion(version);
     }
 
-// $FF: synthetic class
-    static class NamelessClass415696397 {
+    // $FF: synthetic class
+    static class NamelessClass425749475 {
     }
 
     private static class RawVersionList {
@@ -251,8 +251,8 @@ public abstract class VersionList {
             return this.latest;
         }
 
-// $FF: synthetic method
-        RawVersionList(VersionList.NamelessClass415696397 x0) {
+        // $FF: synthetic method
+        RawVersionList(VersionList.NamelessClass425749475 x0) {
             this();
         }
     }

@@ -20,6 +20,7 @@ import com.mojang.authlib.exceptions.InvalidCredentialsException;
 import com.mojang.authlib.exceptions.UserMigratedException;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.authlib.yggdrasil.response.ProfileSearchResultsResponse;
 import com.mojang.authlib.yggdrasil.response.Response;
 import com.mojang.util.UUIDTypeAdapter;
 import java.io.IOException;
@@ -38,9 +39,10 @@ public class YggdrasilAuthenticationService extends HttpAuthenticationService {
         super(proxy);
         this.clientToken = clientToken;
         GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(GameProfile.class, new YggdrasilAuthenticationService.GameProfileSerializer((YggdrasilAuthenticationService.NamelessClass2102887161) null));
+        builder.registerTypeAdapter(GameProfile.class, new YggdrasilAuthenticationService.GameProfileSerializer((YggdrasilAuthenticationService.NamelessClass1220797472) null));
         builder.registerTypeAdapter(PropertyMap.class, new PropertyMap.Serializer());
         builder.registerTypeAdapter(UUID.class, new UUIDTypeAdapter());
+        builder.registerTypeAdapter(ProfileSearchResultsResponse.class, new ProfileSearchResultsResponse.Serializer());
         this.gson = builder.create();
     }
 
@@ -86,8 +88,8 @@ public class YggdrasilAuthenticationService extends HttpAuthenticationService {
         return this.clientToken;
     }
 
-// $FF: synthetic class
-    static class NamelessClass2102887161 {
+    // $FF: synthetic class
+    static class NamelessClass1220797472 {
     }
 
     private static class GameProfileSerializer implements JsonSerializer<GameProfile>, JsonDeserializer<GameProfile> {
@@ -115,8 +117,8 @@ public class YggdrasilAuthenticationService extends HttpAuthenticationService {
             return result;
         }
 
-// $FF: synthetic method
-        GameProfileSerializer(YggdrasilAuthenticationService.NamelessClass2102887161 x0) {
+        // $FF: synthetic method
+        GameProfileSerializer(YggdrasilAuthenticationService.NamelessClass1220797472 x0) {
             this();
         }
     }

@@ -31,8 +31,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import net.minecraft.launcher.game.MinecraftReleaseType;
@@ -173,8 +173,8 @@ public class MinecraftVersionManager implements VersionManager {
                 Version bVer = b.getLatestVersion();
                 return aVer.getReleaseTime() != null && bVer.getReleaseTime() != null ? bVer.getReleaseTime().compareTo(aVer.getReleaseTime()) : bVer.getUpdatedTime().compareTo(aVer.getUpdatedTime());
             }
-// $FF: synthetic method
-// $FF: bridge method
+            // $FF: synthetic method
+            // $FF: bridge method
 
             public int compare(Object x0, Object x1) {
                 return this.compare((VersionSyncInfo) x0, (VersionSyncInfo) x1);

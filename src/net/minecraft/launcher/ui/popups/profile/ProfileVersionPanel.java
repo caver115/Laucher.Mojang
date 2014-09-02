@@ -203,7 +203,7 @@ public class ProfileVersionPanel extends JPanel implements RefreshedVersionsList
             return this.type;
         }
 
-// $FF: synthetic method
+        // $FF: synthetic method
         ReleaseTypeCheckBox(MinecraftReleaseType x0, Object x1) {
             this(x0);
         }
@@ -225,7 +225,7 @@ public class ProfileVersionPanel extends JPanel implements RefreshedVersionsList
             return this;
         }
 
-// $FF: synthetic method
+        // $FF: synthetic method
         VersionListRenderer(Object x0) {
             this();
         }

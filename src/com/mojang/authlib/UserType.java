@@ -9,7 +9,7 @@ public enum UserType {
     MOJANG("MOJANG", 1, "mojang");
     private static final Map<String, UserType> BY_NAME = new HashMap();
     private final String name;
-// $FF: synthetic field
+    // $FF: synthetic field
     private static final UserType[] $VALUES = new UserType[]{LEGACY, MOJANG};
 
     private UserType(String var1, int var2, String name) {

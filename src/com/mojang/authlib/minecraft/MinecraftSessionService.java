@@ -13,5 +13,5 @@ public interface MinecraftSessionService {
 
     Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> getTextures(GameProfile var1, boolean var2);
 
-    GameProfile fillProfileProperties(GameProfile var1);
+    GameProfile fillProfileProperties(GameProfile var1, boolean var2);
 }

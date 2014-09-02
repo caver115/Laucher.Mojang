@@ -77,11 +77,16 @@ public class AssetIndex {
                 } else if (this.size != that.size) {
                     return false;
                 } else {
-                    if (this.compressedHash != null) {
-                        if (!this.compressedHash.equals(that.compressedHash)) {
-                            return false;
+                    label41:
+                    {
+                        if (this.compressedHash != null) {
+                            if (this.compressedHash.equals(that.compressedHash)) {
+                                break label41;
+                            }
+                        } else if (that.compressedHash == null) {
+                            break label41;
                         }
-                    } else if (that.compressedHash != null) {
+
                         return false;
                     }
 

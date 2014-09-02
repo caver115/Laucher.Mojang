@@ -15,7 +15,7 @@ public enum OperatingSystem {
     private static final Logger LOGGER = LogManager.getLogger();
     private final String name;
     private final String[] aliases;
-// $FF: synthetic field
+    // $FF: synthetic field
     private static final OperatingSystem[] $VALUES = new OperatingSystem[]{LINUX, WINDOWS, OSX, UNKNOWN};
 
     private OperatingSystem(String var1, int var2, String name, String... aliases) {

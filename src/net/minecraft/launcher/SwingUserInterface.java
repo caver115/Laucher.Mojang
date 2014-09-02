@@ -90,7 +90,7 @@ public class SwingUserInterface implements MinecraftUserInterface {
 
     public void initializeFrame() {
         this.frame.getContentPane().removeAll();
-        this.frame.setTitle("Minecraft Launcher 1.5.2");
+        this.frame.setTitle("Minecraft Launcher 1.5.3");
         this.frame.setPreferredSize(new Dimension(900, 580));
         this.frame.setDefaultCloseOperation(2);
         this.frame.addWindowListener(new WindowAdapter() {
@@ -254,7 +254,7 @@ public class SwingUserInterface implements MinecraftUserInterface {
     }
 
     public String getTitle() {
-        return "Minecraft Launcher 1.5.2";
+        return "Minecraft Launcher 1.5.3";
     }
 
     public JFrame getFrame() {

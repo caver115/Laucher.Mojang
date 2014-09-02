@@ -46,17 +46,21 @@ public class QueueLogAppender extends AbstractAppender {
     }
 
     @PluginFactory
-    public static QueueLogAppender createAppender(@PluginAttribute("name") String name, @PluginAttribute("ignoreExceptions") String ignore, @PluginElement("Layout") Layout<? extends Serializable> layout, @PluginElement("Filters") Filter filter) {
+    public static QueueLogAppender createAppender(@PluginAttribute("name") String name, @PluginAttribute("ignoreExceptions") String ignore, @PluginElement("Layout") Layout<? extends Serializable> layout, @PluginElement("Filters") Filter filter, @PluginAttribute("target") String target) {
         boolean ignoreExceptions = Boolean.parseBoolean(ignore);
         if (name == null) {
             LOGGER.error("No name provided for QueueLogAppender");
             return null;
         } else {
+            if (target == null) {
+                target = name;
+            }
+
             QUEUE_LOCK.writeLock().lock();
-            Object queue = (BlockingQueue) QUEUES.get(name);
+            Object queue = (BlockingQueue) QUEUES.get(target);
             if (queue == null) {
                 queue = new LinkedBlockingQueue();
-                QUEUES.put(name, (BlockingQueue<String>) queue);
+                QUEUES.put(target, (BlockingQueue<String>) queue);
             }
 
             QUEUE_LOCK.writeLock().unlock();

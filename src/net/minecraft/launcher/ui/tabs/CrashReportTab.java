@@ -58,7 +58,7 @@ public class CrashReportTab extends JPanel {
                 public void run() {
                     try {
                         HashMap e = new HashMap();
-                        e.put("launcher.version", "1.5.2");
+                        e.put("launcher.version", "1.5.3");
                         e.put("launcher.title", minecraftLauncher.getUserInterface().getTitle());
                         e.put("bootstrap.version", String.valueOf(minecraftLauncher.getBootstrapVersion()));
                         CrashReportTab.this.hopperServiceResponse = HopperService.submitReport(minecraftLauncher.getLauncher().getProxy(), report, "Minecraft", version.getId(), e);

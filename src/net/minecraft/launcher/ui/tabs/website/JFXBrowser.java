@@ -90,8 +90,8 @@ public class JFXBrowser implements Browser {
                             }
 
                         }
-// $FF: synthetic method
-// $FF: bridge method
+                        // $FF: synthetic method
+                        // $FF: bridge method
 
                         public void changed(ObservableValue x0, Object x1, Object x2) {
                             this.changed(x0, (State) x1, (State) x2);

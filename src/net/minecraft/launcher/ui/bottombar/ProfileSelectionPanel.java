@@ -162,7 +162,7 @@ public class ProfileSelectionPanel extends JPanel implements ActionListener, Ite
             return this;
         }
 
-// $FF: synthetic method
+        // $FF: synthetic method
         ProfileListRenderer(Object x0) {
             this();
         }

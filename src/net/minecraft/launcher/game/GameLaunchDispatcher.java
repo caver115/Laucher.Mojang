@@ -36,34 +36,23 @@ public class GameLaunchDispatcher implements GameRunnerListener {
         if (user != null && user.isLoggedIn() && profile != null && !this.launcher.getLauncher().getVersionManager().getVersions(profile.getVersionFilter()).isEmpty()) {
             this.lock.lock();
 
-            label107:
-            {
-                GameLaunchDispatcher.PlayStatus var4;
-                try {
-                    if (this.downloadInProgress) {
-                        var4 = GameLaunchDispatcher.PlayStatus.DOWNLOADING;
-                        return var4;
-                    }
-
+            GameLaunchDispatcher.PlayStatus var4;
+            try {
+                if (!this.downloadInProgress) {
                     if (!this.instances.containsKey(user)) {
-                        break label107;
+                        return user.getSelectedProfile() == null ? GameLaunchDispatcher.PlayStatus.CAN_PLAY_DEMO : (user.canPlayOnline() ? GameLaunchDispatcher.PlayStatus.CAN_PLAY_ONLINE : GameLaunchDispatcher.PlayStatus.CAN_PLAY_OFFLINE);
                     }
 
                     var4 = GameLaunchDispatcher.PlayStatus.ALREADY_PLAYING;
-                } finally {
-                    this.lock.unlock();
+                    return var4;
                 }
 
-                return var4;
+                var4 = GameLaunchDispatcher.PlayStatus.DOWNLOADING;
+            } finally {
+                this.lock.unlock();
             }
 
-            if (user.getSelectedProfile() == null) {
-                return GameLaunchDispatcher.PlayStatus.CAN_PLAY_DEMO;
-            } else if (user.canPlayOnline()) {
-                return GameLaunchDispatcher.PlayStatus.CAN_PLAY_ONLINE;
-            } else {
-                return GameLaunchDispatcher.PlayStatus.CAN_PLAY_OFFLINE;
-            }
+            return var4;
         } else {
             return GameLaunchDispatcher.PlayStatus.LOADING;
         }
@@ -192,7 +181,7 @@ public class GameLaunchDispatcher implements GameRunnerListener {
         DOWNLOADING("DOWNLOADING", 5, "Installing...", false);
         private final String name;
         private final boolean canPlay;
-// $FF: synthetic field
+        // $FF: synthetic field
         private static final GameLaunchDispatcher.PlayStatus[] $VALUES = new GameLaunchDispatcher.PlayStatus[]{LOADING, CAN_PLAY_DEMO, CAN_PLAY_ONLINE, CAN_PLAY_OFFLINE, ALREADY_PLAYING, DOWNLOADING};
 
         private PlayStatus(String var1, int var2, String name, boolean canPlay) {

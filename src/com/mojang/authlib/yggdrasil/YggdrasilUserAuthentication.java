@@ -9,8 +9,10 @@ import com.mojang.authlib.exceptions.AuthenticationException;
 import com.mojang.authlib.exceptions.InvalidCredentialsException;
 import com.mojang.authlib.yggdrasil.request.AuthenticationRequest;
 import com.mojang.authlib.yggdrasil.request.RefreshRequest;
+import com.mojang.authlib.yggdrasil.request.ValidateRequest;
 import com.mojang.authlib.yggdrasil.response.AuthenticationResponse;
 import com.mojang.authlib.yggdrasil.response.RefreshResponse;
+import com.mojang.authlib.yggdrasil.response.Response;
 import com.mojang.authlib.yggdrasil.response.User;
 import java.net.URL;
 import java.util.Arrays;
@@ -118,30 +120,46 @@ public class YggdrasilUserAuthentication extends HttpUserAuthentication {
             throw new InvalidCredentialsException("Invalid access token");
         } else {
             LOGGER.info("Logging in with access token");
-            RefreshRequest request = new RefreshRequest(this);
-            RefreshResponse response = (RefreshResponse) this.getAuthenticationService().makeRequest(ROUTE_REFRESH, request, RefreshResponse.class);
-            if (!response.getClientToken().equals(this.getAuthenticationService().getClientToken())) {
-                throw new AuthenticationException("Server requested we change our client token. Don\'t know how to handle this!");
-            } else {
-                if (response.getSelectedProfile() != null) {
-                    this.setUserType(response.getSelectedProfile().isLegacy() ? UserType.LEGACY : UserType.MOJANG);
-                } else if (ArrayUtils.isNotEmpty((Object[]) response.getAvailableProfiles())) {
-                    this.setUserType(response.getAvailableProfiles()[0].isLegacy() ? UserType.LEGACY : UserType.MOJANG);
-                }
-
-                if (response.getUser() != null && response.getUser().getId() != null) {
-                    this.setUserid(response.getUser().getId());
-                } else {
-                    this.setUserid(this.getUsername());
-                }
-
+            if (this.checkTokenValidity()) {
+                LOGGER.debug("Skipping refresh call as we\'re safely logged in.");
                 this.isOnline = true;
-                this.accessToken = response.getAccessToken();
-                this.profiles = response.getAvailableProfiles();
-                this.setSelectedProfile(response.getSelectedProfile());
-                this.getModifiableUserProperties().clear();
-                this.updateUserProperties(response.getUser());
+            } else {
+                RefreshRequest request = new RefreshRequest(this);
+                RefreshResponse response = (RefreshResponse) this.getAuthenticationService().makeRequest(ROUTE_REFRESH, request, RefreshResponse.class);
+                if (!response.getClientToken().equals(this.getAuthenticationService().getClientToken())) {
+                    throw new AuthenticationException("Server requested we change our client token. Don\'t know how to handle this!");
+                } else {
+                    if (response.getSelectedProfile() != null) {
+                        this.setUserType(response.getSelectedProfile().isLegacy() ? UserType.LEGACY : UserType.MOJANG);
+                    } else if (ArrayUtils.isNotEmpty((Object[]) response.getAvailableProfiles())) {
+                        this.setUserType(response.getAvailableProfiles()[0].isLegacy() ? UserType.LEGACY : UserType.MOJANG);
+                    }
+
+                    if (response.getUser() != null && response.getUser().getId() != null) {
+                        this.setUserid(response.getUser().getId());
+                    } else {
+                        this.setUserid(this.getUsername());
+                    }
+
+                    this.isOnline = true;
+                    this.accessToken = response.getAccessToken();
+                    this.profiles = response.getAvailableProfiles();
+                    this.setSelectedProfile(response.getSelectedProfile());
+                    this.getModifiableUserProperties().clear();
+                    this.updateUserProperties(response.getUser());
+                }
             }
+        }
+    }
+
+    protected boolean checkTokenValidity() throws AuthenticationException {
+        ValidateRequest request = new ValidateRequest(this);
+
+        try {
+            this.getAuthenticationService().makeRequest(ROUTE_VALIDATE, request, Response.class);
+            return true;
+        } catch (AuthenticationException var3) {
+            return false;
         }
     }
 

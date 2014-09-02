@@ -52,7 +52,7 @@ public class VersionSyncInfo {
 
         REMOTE("REMOTE", 0),
         LOCAL("LOCAL", 1);
-// $FF: synthetic field
+        // $FF: synthetic field
         private static final VersionSyncInfo.VersionSource[] $VALUES = new VersionSyncInfo.VersionSource[]{REMOTE, LOCAL};
 
         private VersionSource(String var1, int var2) {

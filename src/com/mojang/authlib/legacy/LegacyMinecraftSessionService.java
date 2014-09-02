@@ -56,7 +56,7 @@ public class LegacyMinecraftSessionService extends HttpMinecraftSessionService {
         return new HashMap();
     }
 
-    public GameProfile fillProfileProperties(GameProfile profile) {
+    public GameProfile fillProfileProperties(GameProfile profile, boolean requireSecure) {
         return profile;
     }
 

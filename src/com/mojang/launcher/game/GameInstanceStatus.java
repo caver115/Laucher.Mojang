@@ -9,7 +9,7 @@ public enum GameInstanceStatus {
     PLAYING("PLAYING", 4, "Playing..."),
     IDLE("IDLE", 5, "Idle");
     private final String name;
-// $FF: synthetic field
+    // $FF: synthetic field
     private static final GameInstanceStatus[] $VALUES = new GameInstanceStatus[]{PREPARING, DOWNLOADING, INSTALLING, LAUNCHING, PLAYING, IDLE};
 
     private GameInstanceStatus(String var1, int var2, String name) {

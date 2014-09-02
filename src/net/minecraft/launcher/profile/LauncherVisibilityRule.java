@@ -6,7 +6,7 @@ public enum LauncherVisibilityRule {
     CLOSE_LAUNCHER("CLOSE_LAUNCHER", 1, "Close launcher when game starts"),
     DO_NOTHING("DO_NOTHING", 2, "Keep the launcher open");
     private final String name;
-// $FF: synthetic field
+    // $FF: synthetic field
     private static final LauncherVisibilityRule[] $VALUES = new LauncherVisibilityRule[]{HIDE_LAUNCHER, CLOSE_LAUNCHER, DO_NOTHING};
 
     private LauncherVisibilityRule(String var1, int var2, String name) {

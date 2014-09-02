@@ -40,9 +40,9 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeSet;
 import java.util.UUID;
-import java.util.Map.Entry;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import net.minecraft.launcher.Launcher;
@@ -154,8 +154,8 @@ public class MinecraftGameRunner extends AbstractGameRunner implements GameProce
                 public boolean apply(String input) {
                     return input.contains("#@!@#");
                 }
-// $FF: synthetic method
-// $FF: bridge method
+                // $FF: synthetic method
+                // $FF: bridge method
 
                 public boolean apply(Object x0) {
                     return this.apply((String) x0);

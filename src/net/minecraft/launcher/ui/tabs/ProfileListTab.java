@@ -246,7 +246,7 @@ public class ProfileListTab extends JScrollPane implements RefreshedProfilesList
             this.fireTableDataChanged();
         }
 
-// $FF: synthetic method
+        // $FF: synthetic method
         ProfileTableModel(Object x1) {
             this();
         }

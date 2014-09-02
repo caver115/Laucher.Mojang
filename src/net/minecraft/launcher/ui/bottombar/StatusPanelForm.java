@@ -77,7 +77,7 @@ public class StatusPanelForm extends SidebarGridForm {
         YELLOW("YELLOW", 1, "May be experiencing issues."),
         RED("RED", 2, "Offline, experiencing problems.");
         private final String title;
-// $FF: synthetic field
+        // $FF: synthetic field
         private static final StatusPanelForm.ServerStatus[] $VALUES = new StatusPanelForm.ServerStatus[]{GREEN, YELLOW, RED};
 
         private ServerStatus(String var1, int var2, String title) {

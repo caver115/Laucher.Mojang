@@ -15,7 +15,7 @@ public enum MinecraftReleaseType implements ReleaseType {
     private static final Map<String, MinecraftReleaseType> LOOKUP = Maps.newHashMap();
     private final String name;
     private final String description;
-// $FF: synthetic field
+    // $FF: synthetic field
     private static final MinecraftReleaseType[] $VALUES = new MinecraftReleaseType[]{SNAPSHOT, RELEASE, OLD_BETA, OLD_ALPHA};
 
     private MinecraftReleaseType(String var1, int var2, String name, String description) {

@@ -144,7 +144,7 @@ public class AssetDownloadable extends Downloadable {
         DOWNLOADING("DOWNLOADING", 0, "Downloading"),
         EXTRACTING("EXTRACTING", 1, "Extracting");
         private final String name;
-// $FF: synthetic field
+        // $FF: synthetic field
         private static final AssetDownloadable.Status[] $VALUES = new AssetDownloadable.Status[]{DOWNLOADING, EXTRACTING};
 
         private Status(String var1, int var2, String name) {

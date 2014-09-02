@@ -42,7 +42,7 @@ public class CompatibilityRule {
 
         ALLOW("ALLOW", 0),
         DISALLOW("DISALLOW", 1);
-// $FF: synthetic field
+        // $FF: synthetic field
         private static final CompatibilityRule.Action[] $VALUES = new CompatibilityRule.Action[]{ALLOW, DISALLOW};
 
         private Action(String var1, int var2) {

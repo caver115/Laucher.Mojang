@@ -61,7 +61,7 @@ public class ProfileManager {
     }
 
     public void saveProfiles() throws IOException {
-        ProfileManager.RawProfileList rawProfileList = new ProfileManager.RawProfileList(this.profiles, this.getSelectedProfile().getName(), this.selectedUser, this.launcher.getClientToken(), this.authDatabase, (ProfileManager.NamelessClass652460259) null);
+        ProfileManager.RawProfileList rawProfileList = new ProfileManager.RawProfileList(this.profiles, this.getSelectedProfile().getName(), this.selectedUser, this.launcher.getClientToken(), this.authDatabase, (ProfileManager.NamelessClass2121708221) null);
         FileUtils.writeStringToFile(this.profileFile, this.gson.toJson((Object) rawProfileList));
     }
 
@@ -181,8 +181,8 @@ public class ProfileManager {
             this.authenticationDatabase = authenticationDatabase;
         }
 
-// $FF: synthetic method
-        RawProfileList(Map x0, String x1, String x2, UUID x3, AuthenticationDatabase x4, ProfileManager.NamelessClass652460259 x5) {
+        // $FF: synthetic method
+        RawProfileList(Map x0, String x1, String x2, UUID x3, AuthenticationDatabase x4, ProfileManager.NamelessClass2121708221 x5) {
             this(x0, x1, x2, x3, x4);
         }
 
@@ -233,12 +233,12 @@ public class ProfileManager {
                     profile.setPlayerUUID((String) null);
                 }
 
-                return new ProfileManager.RawProfileList((Map) profiles, selectedProfile, selectedUser, clientToken, database, (ProfileManager.NamelessClass652460259) null);
+                return new ProfileManager.RawProfileList((Map) profiles, selectedProfile, selectedUser, clientToken, database, (ProfileManager.NamelessClass2121708221) null);
             }
 
             public JsonElement serialize(ProfileManager.RawProfileList src, Type typeOfSrc, JsonSerializationContext context) {
                 JsonObject version = new JsonObject();
-                version.addProperty("name", "1.5.2");
+                version.addProperty("name", "1.5.3");
                 version.addProperty("format", (Number) Integer.valueOf(17));
                 JsonObject object = new JsonObject();
                 object.add("profiles", context.serialize(src.profiles));
@@ -253,7 +253,7 @@ public class ProfileManager {
         }
     }
 
-// $FF: synthetic class
-    static class NamelessClass652460259 {
+    // $FF: synthetic class
+    static class NamelessClass2121708221 {
     }
 }
